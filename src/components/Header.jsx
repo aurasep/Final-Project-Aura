@@ -32,12 +32,15 @@ const Header = () => {
   }, [searchQuery]);
 
   return (
-    <header className="header bg-gray-800 text-white p-4">
+    <header className="header bg-gray-700 text-gray-200 p-4 shadow">
       {/* Navigation Bar */}
-      <nav className="p-4 bg-gray-800 text-white flex justify-between">
-        <Link to="/">Home</Link>
-        <Link to="/settings">Settings</Link>
-        {/* Tambahkan link lainnya jika perlu */}
+      <nav className="p-4 flex justify-between">
+        <Link to="/" className="hover:text-blue-300 transition duration-300">
+          Home
+        </Link>
+        <Link to="/settings" className="hover:text-blue-300 transition duration-300">
+          Settings
+        </Link>
       </nav>
 
       {/* Search Input */}
@@ -47,23 +50,23 @@ const Header = () => {
           placeholder="Cari film..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full p-2 rounded bg-gray-700 text-white"
+          className="w-full p-2 rounded bg-gray-800 text-gray-200 border border-gray-600"
         />
       </div>
 
       {/* Loading, Error, and Movies List */}
-      {loading && <p className="text-white">Loading Movies...</p>}
-      {error && <p className="text-red-500">{error}</p>}
+      {loading && <p className="text-gray-300">Loading Movies...</p>}
+      {error && <p className="text-red-400">{error}</p>}
       <div className="movie-list grid grid-cols-2 md:grid-cols-4 gap-4">
         {movies.map((movie) => (
-          <div key={movie.id} className="movie-item bg-gray-900 p-2 rounded">
+          <div key={movie.id} className="movie-item bg-gray-600 p-2 rounded shadow">
             <Link to={`/detail/${movie.id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
                 className="w-full h-64 object-cover rounded"
               />
-              <h3 className="text-lg font-bold mt-2 text-center">
+              <h3 className="text-lg font-bold mt-2 text-center text-gray-200">
                 {movie.title}
               </h3>
             </Link>

@@ -9,19 +9,19 @@ const MyList = () => {
   }
 
   return (
-    <div className="my-list bg-gray-800 text-white p-5">
+    <div className="my-list bg-white text-black p-5">
       {myList.length === 0 ? (
         <p>No movies in your list yet.</p>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {myList.map((movie) => (
-            <div key={movie.id} className="movie-card bg-gray-700 rounded-lg p-4">
+            <div key={movie.id} className="movie-card bg-blue-100 rounded-lg p-4 shadow-md">
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
                 className="w-full h-auto object-cover rounded-lg mb-2"
               />
-              <h2 className="text-lg font-bold">{movie.title}</h2>
+              <h2 className="text-lg font-bold text-blue-700">{movie.title}</h2>
             </div>
           ))}
         </div>

@@ -1,62 +1,48 @@
 @mixin theme($bg-color) {
-    background: $bg-color;
-    transition: background 0.3s ease;
+  background: $bg-color;
+  transition: background 0.3s ease;
 }
 
-$light-theme: black;
-$dark-theme: white;
+$light-bg-color: white;
+$dark-bg-color: black;
+
+$primary-bg-color: rgb(163, 203, 255);
+$text-color: black;
+$link-color: rgb(0, 100, 200);
 
 body {
-    @include theme($light-theme);
+  @include theme($light-bg-color);
+  color: $text-color;
+  font-family: 'Arial, sans-serif';
+  transition: background 0.3s ease;
 }
 
 .dark-mode {
-    @include theme($dark-theme);
+  @include theme($dark-bg-color);
 }
-
-
-$background-color: black;
-$text-color: white;
-$font-family: 'Arial, sans-serif';
-
-body {
-    background: $background-color;
-    color: $text-color;
-    font-family: $font-family;
-    transition: background 0.3s ease;
-}
-
-
-$background-color: rgb(163, 203, 255);
-$link-color: rgb(0, 100, 200);
 
 a {
-    color: $link-color;
-    text-decoration: none;
-    transition: color 0.3s ease;
+  color: $link-color;
+  text-decoration: none;
+  transition: color 0.3s ease;
 
-    &:hover {
-        color: (red); // Ubah warna saat hover
-    }
+  &:hover {
+      color: red;
+  }
 }
 
-/* Sembunyikan scrollbar */
 .movie-slider-container {
-    overflow-x: auto;
-    scrollbar-width: thin; /* Untuk Firefox */
-    scrollbar-color: transparent transparent; /* Untuk Firefox */
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  
+  &::-webkit-scrollbar {
+      display: none;
   }
   
-  .movie-slider-container::-webkit-scrollbar {
-    display: none; /* Untuk Chrome, Safari, dan Edge */
-  }
-  
-  /* Scroll Snap */
-  .movie-slider-container {
-    scroll-snap-type: x mandatory; /* Aktifkan snap */
-  }
-  
-  .movie-card {
-    scroll-snap-align: start; /* Elemen akan snap ke posisi mulai */
-  }
-  
+  scroll-snap-type: x mandatory;
+}
+
+.movie-card {
+  scroll-snap-align: start;
+}

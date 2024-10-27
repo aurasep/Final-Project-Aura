@@ -81,11 +81,11 @@ const FilmView = () => {
   }
 
   return (
-    <div className="home bg-gray-800 text-white p-5 space-y-8 overflow-y-hidden">
+    <div className="home bg-white text-black p-5 space-y-8 overflow-y-hidden">
       <div className="mb-4">
         <input
           type="text"
-          className="bg-gray-700 text-white rounded-lg p-2 w-full max-w-xs"
+          className="bg-gray-200 text-black rounded-lg p-2 w-full max-w-xs border border-gray-400"
           placeholder="Search Movies..."
           value={searchQuery}
           onChange={(e) => {
@@ -109,7 +109,7 @@ const FilmView = () => {
 const MovieSlider = ({ title, movies }) => {
   return (
     <div className="movie-slider-container mb-6 overflow-x-auto">
-      <h2 className="text-2xl font-bold mb-4">{title}</h2>
+      <h2 className="text-2xl font-bold mb-4 text-black">{title}</h2>
       <div className="flex space-x-4">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
@@ -128,7 +128,7 @@ const MovieCard = ({ movie }) => {
           alt={movie.title}
           className="w-full h-auto object-contain rounded-lg transition-transform duration-300 group-hover:scale-105"
         />
-        <h3 className="text-white text-center mt-2 text-xl group-hover:text-red-500">
+        <h3 className="text-black text-center mt-2 text-xl group-hover:text-red-500">
           {movie.title}
         </h3>
       </Link>

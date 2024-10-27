@@ -1,17 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  darkMode: false, 
+  language: "en", 
+};
 
 const settingsSlice = createSlice({
-  name: 'settings',
-  initialState: {
-    darkMode: false,
-    language: 'en',
-  },
+  name: "settings",
+  initialState,
   reducers: {
-    toggleDarkMode: (state) => {
-      state.darkMode = !state.darkMode;
+    toggleDarkMode(state) {
+      state.darkMode = !state.darkMode; 
     },
-    setLanguage: (state, action) => {
-      state.language = action.payload;
+    setLanguage(state, action) {
+      state.language = action.payload; 
     },
   },
 });

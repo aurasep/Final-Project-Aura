@@ -10,19 +10,19 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-black p-4 flex items-center justify-between">
+    <div className="bg-gray-700 p-4 flex items-center justify-between shadow-md">
       <div className="flex items-center space-x-4">
-        <div className="text-red-500 text-2xl font-bold transition-transform duration-300 hover:scale-110">
+        <div className="text-blue-400 text-2xl font-bold transition-transform duration-300 hover:scale-110">
           <Link to="/mystream">MyStream</Link>
         </div>
-        <div className="hidden md:flex space-x-4 text-white">
-          <Link to="/" className="hover:text-red-400">Home</Link>
-          <Link to="/movies" className="hover:text-red-400">Movies</Link>
+        <div className="hidden md:flex space-x-4 text-gray-200">
+          <Link to="/" className="hover:text-blue-400">Home</Link>
+          <Link to="/movies" className="hover:text-blue-400">Movies</Link>
           
           {/* Dropdown untuk Your Rating dan My List */}
           <div className="relative">
             <button
-              className="hover:text-red-400 focus:outline-none flex items-center"
+              className="hover:text-blue-400 focus:outline-none flex items-center"
               onClick={toggleDropdown}
             >
               More
@@ -33,36 +33,35 @@ const Navbar = () => {
               )}
             </button>
             {isDropdownOpen && (
-              <div className="absolute menu bg-gray-900 text-white mt-2 w-36 rounded-box z-[1] w-30 p-2 shadow">
+              <div className="absolute menu bg-gray-600 text-gray-200 mt-2 w-36 rounded-box z-[1] p-2 shadow-lg">
                 <ul className="py-2">
-                <li>
-  <Link
-    to="/rated-movies"
-    className="block px-5 py-2 hover:bg-white-800"
-    onClick={() => setIsDropdownOpen(false)} // Perbaikan di sini
-  >
-    ⭐My Rating
-  </Link>
-</li>
-<li>
-  <Link
-    to="/mylist"
-    className="block px-5 py-2 hover:bg-white-800"
-    onClick={() => setIsDropdownOpen(false)} // Perbaikan di sini
-  >
-    📝My List
-  </Link>
-</li>
-<li>
-  <Link
-    to="/genre"
-    className="block px-5 py-2 hover:bg-white-800"
-    onClick={() => setIsDropdownOpen(false)} // Perbaikan di sini
-  >
-    🎬Genre
-  </Link>
-</li>
-
+                  <li>
+                    <Link
+                      to="/rated-movies"
+                      className="block px-5 py-2 hover:bg-gray-500"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      ⭐My Rating
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/mylist"
+                      className="block px-5 py-2 hover:bg-gray-500"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      📝My List
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/genre"
+                      className="block px-5 py-2 hover:bg-gray-500"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      🎬Genre
+                    </Link>
+                  </li>
                 </ul>
               </div>
             )}
@@ -75,7 +74,7 @@ const Navbar = () => {
         <input 
           type="text" 
           placeholder="Search" 
-          className="hidden md:block px-2 py-1 rounded bg-gray-800 text-white focus:ring-red-500" 
+          className="hidden md:block px-2 py-1 rounded bg-gray-800 text-gray-200 focus:ring-blue-400" 
         />
         <div className="dropdown dropdown-bottom dropdown-end">
           <div tabIndex={0} role="button" className="w-10 rounded-full cursor-pointer">
@@ -87,20 +86,20 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content menu bg-gray-900 text-white rounded-box z-[1] w-30 p-2 shadow"
+            className="dropdown-content menu bg-gray-600 text-gray-200 rounded-box z-[1] w-30 p-2 shadow-lg"
           >
             <li>
-              <Link to="/profile" className="hover:bg-white-800">
+              <Link to="/profile" className="hover:bg-gray-500">
                 Profile
               </Link>
             </li>
             <li>
-              <Link to="/settings" className="hover:bg-white-800">
+              <Link to="/settings" className="hover:bg-gray-500">
                 Settings
               </Link>
             </li>
             <li>
-              <Link to="/login" className="hover:bg-white-800">
+              <Link to="/login" className="hover:bg-gray-500">
                 Logout
               </Link>
             </li>

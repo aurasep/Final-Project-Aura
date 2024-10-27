@@ -10,7 +10,6 @@ const SeriesView = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fungsi untuk mengambil series populer
   const fetchPopularSeries = async () => {
     try {
       const response = await axios.get(
@@ -22,7 +21,6 @@ const SeriesView = () => {
     }
   };
 
-  // Fungsi untuk mengambil series dengan rating tertinggi
   const fetchTopRatedSeries = async () => {
     try {
       const response = await axios.get(
@@ -34,7 +32,6 @@ const SeriesView = () => {
     }
   };
 
-  // Mengambil data series saat komponen pertama kali dimuat
   useEffect(() => {
     setLoading(true);
     Promise.all([fetchPopularSeries(), fetchTopRatedSeries()])
@@ -51,10 +48,9 @@ const SeriesView = () => {
   }
 
   return (
-    <div className="series bg-gray-800 text-white p-5 space-y-8">
-      {/* Section untuk series populer */}
+    <div className="series bg-white text-black p-5 space-y-8">
       <div className="popular-series">
-        <h2 className="text-2xl font-bold mb-4">Series Populer</h2>
+        <h2 className="text-2xl font-bold mb-4 text-blue-600">Series Populer</h2>
         <div className="series-slider overflow-x-scroll scrollbar-hide">
           <div className="flex space-x-4">
             {popularSeries.map((series) => (
@@ -64,9 +60,8 @@ const SeriesView = () => {
         </div>
       </div>
 
-      {/* Section untuk series dengan rating tertinggi */}
       <div className="top-rated-series">
-        <h2 className="text-2xl font-bold mb-4">Series dengan Rating Tertinggi</h2>
+        <h2 className="text-2xl font-bold mb-4 text-blue-600">Series dengan Rating Tertinggi</h2>
         <div className="series-slider overflow-x-scroll scrollbar-hide">
           <div className="flex space-x-4">
             {topRatedSeries.map((series) => (
@@ -79,17 +74,16 @@ const SeriesView = () => {
   );
 };
 
-// Komponen untuk menampilkan kartu series
 const SeriesCard = ({ series }) => {
   return (
-    <div className="min-w-[200px] shadow-lg rounded-lg">
+    <div className="min-w-[200px] shadow-lg rounded-lg bg-blue-100">
       <Link to={`/series/${series.id}`}>
         <img
           src={`https://image.tmdb.org/t/p/w500${series.poster_path}`}
           alt={series.name}
           className="w-full h-64 object-cover rounded-t-lg"
         />
-        <h3 className="text-center text-xl font-bold truncate p-2 hover:text-red-500">
+        <h3 className="text-center text-xl font-bold truncate p-2 text-blue-800 hover:text-blue-500">
           {series.name}
         </h3>
       </Link>

@@ -6,10 +6,14 @@ const MoviesView = () => {
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("");
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchGenres = async () => {
+      setLoading(true);
+      setError(null);
       try {
         const apiKey = "216ce15710ded054044b07e34eee0562";
         const response = await axios.get(
@@ -17,7 +21,10 @@ const MoviesView = () => {
         );
         setGenres(response.data.genres);
       } catch (error) {
+        setError("Error fetching genres. Please try again later.");
         console.error("Error fetching genres:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -27,6 +34,8 @@ const MoviesView = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       if (selectedGenre) {
+        setLoading(true);
+        setError(null);
         try {
           const apiKey = "216ce15710ded054044b07e34eee0562";
           const response = await axios.get(
@@ -34,7 +43,10 @@ const MoviesView = () => {
           );
           setMovies(response.data.results);
         } catch (error) {
+          setError("Error fetching movies. Please try again later.");
           console.error("Error fetching movies:", error);
+        } finally {
+          setLoading(false);
         }
       } else {
         setMovies([]);
@@ -53,16 +65,19 @@ const MoviesView = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 p-6">
+    <div className="min-h-screen bg-white p-6">
       <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-white mb-4">Explore Movies</h1>
-        <p className="text-lg text-gray-300">
+        <h1 className="text-4xl font-bold text-black mb-4">Explore Movies</h1>
+        <p className="text-lg text-gray-700">
           Browse a variety of movies by selecting a genre.
         </p>
       </div>
 
+      {loading && <p className="text-black text-center">Loading...</p>}
+      {error && <p className="text-red-500 text-center">{error}</p>}
+
       <div className="mb-10">
-        <h2 className="text-3xl font-semibold text-white mb-4">Filter by Genre</h2>
+        <h2 className="text-3xl font-semibold text-black mb-4">Filter by Genre</h2>
         <div className="flex flex-wrap justify-center gap-2 mb-6">
           {genres.map((genre) => (
             <button
@@ -81,7 +96,7 @@ const MoviesView = () => {
           movies.map((movie) => (
             <div 
               key={movie.id} 
-              className="bg-gray-800 rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 cursor-pointer"
+              className="bg-gray-100 rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 cursor-pointer"
               onClick={() => handleMovieClick(movie.id)}
             >
               <img
@@ -90,15 +105,15 @@ const MoviesView = () => {
                 className="w-full h-auto object-cover"
               />
               <div className="p-2">
-                <h3 className="text-lg font-bold text-white truncate">{movie.title}</h3>
-                <p className="mt-1 text-gray-400 text-sm line-clamp-2">
+                <h3 className="text-lg font-bold text-black truncate">{movie.title}</h3>
+                <p className="mt-1 text-gray-700 text-sm line-clamp-2">
                   {movie.overview}
                 </p>
               </div>
             </div>
           ))
         ) : (
-          <p className="text-white">No movies found for the selected genre.</p>
+          !loading && <p className="text-black">No movies found for the selected genre.</p>
         )}
       </div>
     </div>

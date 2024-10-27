@@ -8,23 +8,24 @@ const RatingAnda = () => {
   useEffect(() => {
     const storedRatings = JSON.parse(localStorage.getItem("ratings")) || {};
     const movieIds = Object.keys(storedRatings);
-  
+
     const filteredRatedMovies = movieIds
       .filter((id) => storedRatings[id] > 0) // Hanya ambil yang ratingnya lebih dari 0
       .map((id) => ({
         id: id,
         rating: storedRatings[id],
       }));
-  
+
     setRatedMovies(filteredRatedMovies);
   }, []);
-  
 
   return (
-    <div className="rated-movies bg-gray-800 text-white p-5">
-      <h2 className="text-2xl font-bold mb-4">Film yang Sudah Anda Rating</h2>
+    <div className="rated-movies bg-white text-black p-5">
+      <h2 className="text-2xl font-bold mb-4 text-blue-800">
+        Film yang Sudah Anda Rating
+      </h2>
       {ratedMovies.length === 0 ? (
-        <p>Tidak ada film yang di-rating.</p>
+        <p className="text-gray-600">Tidak ada film yang di-rating.</p>
       ) : (
         <div className="movie-slider overflow-x-scroll scrollbar-hide">
           <div className="flex space-x-4">
@@ -36,8 +37,8 @@ const RatingAnda = () => {
       )}
       {/* Link Kembali ke Daftar Film diletakkan di luar loop, di bawah list film yang sudah di-rating */}
       <div className="mt-4">
-        <Link to="/film" className="text-blue-500 hover:text-blue-300">
-          ⬅️Daftar Film
+        <Link to="/film" className="text-blue-500 hover:text-blue-700">
+          ⬅️ Daftar Film
         </Link>
       </div>
     </div>
@@ -72,18 +73,18 @@ const RatedMovieCard = ({ movieId, initialRating }) => {
   };
 
   if (!movie) {
-    return <p>Memuat film...</p>;
+    return <p className="text-gray-600">Memuat film...</p>;
   }
 
   return (
-    <div className="min-w-[200px] max-w-[200px] shadow-lg rounded-lg overflow-hidden">
+    <div className="min-w-[200px] max-w-[200px] shadow-lg rounded-lg overflow-hidden bg-white">
       <Link to={`/detail/${movie.id}`}>
         <img
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.title}
           className="w-full h-64 object-cover rounded-t-lg"
         />
-        <h3 className="text-center text-xl font-bold truncate p-2 hover:text-red-500">
+        <h3 className="text-center text-xl font-bold truncate p-2 text-blue-800 hover:text-blue-500">
           {movie.title}
         </h3>
       </Link>

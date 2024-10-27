@@ -9,11 +9,11 @@ const Rating = ({ rating, onRatingChange }) => {
 
   return (
     <div className="flex items-center space-x-2">
-      <button className="btn btn-red" onClick={handleDecrease}>
+      <button className="bg-blue-500 text-white rounded px-2 py-1 hover:bg-blue-700" onClick={handleDecrease}>
         -
       </button>
-      <span className="text-white">Rate: {rating} / 10</span>
-      <button className="btn btn-red" onClick={handleIncrease}>
+      <span className="text-black">Rate: {rating} / 10</span>
+      <button className="bg-blue-500 text-white rounded px-2 py-1 hover:bg-blue-700" onClick={handleIncrease}>
         +
       </button>
     </div>

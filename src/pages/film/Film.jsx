@@ -36,15 +36,17 @@ const Film = () => {
   };
 
   if (loading) {
-    return <p>Memuat film...</p>; // Tampilkan loading
+    return <p className="text-black">Memuat film...</p>; // Tampilkan loading dengan teks hitam
   }
 
   if (error) {
-    return <p>{error}</p>; // Tampilkan error
+    return <p className="text-red-500">{error}</p>; // Tampilkan error dengan warna merah
   }
 
   return (
-    <FilmView data={film} onAddToMyList={handleAddToMyList} /> // Mengirim data film dan fungsi untuk menambah ke My List
+    <div className="bg-white text-black p-5">
+      <FilmView data={film} onAddToMyList={handleAddToMyList} /> {/* Mengirim data film dan fungsi untuk menambah ke My List */}
+    </div>
   );
 };
 

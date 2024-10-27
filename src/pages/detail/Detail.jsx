@@ -80,7 +80,7 @@ const Detail = () => {
   }
 
   return (
-    <div className="bg-gray-800 text-white p-5">
+    <div className="bg-white text-black p-5"> {/* Changed to white background and black text */}
       <div className="relative mb-6">
         {trailerKey && (
           <div className="relative">
@@ -146,7 +146,7 @@ const Detail = () => {
             >
               -
             </button>
-            <span className="text-white">⭐Rating: {rating} / 10</span>
+            <span className="text-black">⭐Rating: {rating} / 10</span> {/* Changed text color to black */}
             <button
               className="btn"
               onClick={() => handleRatingChange(rating + 1)}
@@ -155,7 +155,7 @@ const Detail = () => {
             </button>
           </div>
           <div className="mt-4">
-            <Link to="/movies" className="text-blue-500 hover:text-blue-300">
+            <Link to="/movies" className="text-blue-500 hover:text-blue-700"> {/* Adjusted hover color */}
               ⬅️ Kembali ke Daftar Film
             </Link>
           </div>
